@@ -34,6 +34,13 @@ app.get('/todos',(req,res)=>{
 	});
 });
 
+app.get('/todos/:id',(req,res)=>{
+	Todo.findById(id).then((todos)=>{
+		res.send(todos);
+	},(e)=>{
+			res.status(400).send(e);
+	});
+});
 app.listen(port,()=>{
 	console.log(`Started on port ${port}`);
 });
